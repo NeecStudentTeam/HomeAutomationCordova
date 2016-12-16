@@ -1,0 +1,218 @@
+﻿html, body, ons-template, ons-page {
+    height: 100%;
+}
+
+.firstset {
+    width: 96%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.homebutton {
+    position: relative;
+    width: 100%;
+    height: 48%;
+    margin-top: 2%;
+}
+
+    .homebutton #rimoconbutton {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 80%;
+        width: auto;
+        margin: auto;
+    }
+
+    .homebutton #settingbutton {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        height: 80%;
+        width: auto;
+    }
+
+/*
+    .homebutton {
+    position: relative;
+    top: 70px;
+    left: 20px;
+}
+*/
+
+#Rchoice ons-button:first-child {
+    margin-left: 0;
+}
+
+#Rchoice ons-button {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+    margin-left: 10px;
+    position: relative;
+}
+
+.choice img {
+    width: 90px;
+    height: 90px;
+    position: relative;
+    top: 5px;
+    left: -11px;
+}
+
+.firstrow ons-button:first-child,
+.secondrow ons-button:first-child,
+.thirdrow ons-button:first-child,
+.fourthrow ons-button:first-child,
+.fifthrow ons-button:first-child,
+.sixrow ons-button:first-child,
+.uprow ons-button:first-child,
+.downrow ons-button:first-child {
+    margin-left: 10px;
+}
+
+.tvbutton {
+    font-size: 50px;
+}
+
+.firstrow ons-button {
+    width: 47%;
+    height: 85px;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 25px;
+    padding: 23px;
+}
+
+.secondrow ons-button {
+    width: 30%;
+    height: 85px;
+    margin-top: 10px;
+    margin-left: 13px;
+    font-size: 30px;
+    padding: 23px;
+}
+
+.channelbutton {
+    width: 30%;
+    height: 85px;
+    margin-top: 10px;
+    margin-left: 13px;
+    font-size: 90px;
+    padding: 23px;
+}
+
+.uprow ons-button {
+    width: 30%;
+    height: 85px;
+    margin-top: 20px;
+    margin-left: 202px;
+    font-size: 90px;
+    padding: 15px;
+}
+
+.downrow ons-button {
+    width: 30%;
+    height: 85px;
+    margin-top: 20px;
+    margin-left: 202px;
+    font-size: 90px;
+    padding: 15px;
+}
+
+.typerow {
+    margin-top: 20px;
+}
+
+#channel {
+    margin-left: 53px;
+}
+
+#volume {
+    margin-left: 320px;
+}
+
+.brightness {
+    width: 300px;
+    height: 200px;
+    float: left;
+    border: solid 3px;
+    border-radius: 25px;
+    background-color: darkgray;
+    margin-left: 30px;
+}
+
+.updown {
+    margin-top: 30px;
+    margin-left: 400px;
+}
+
+    .updown p {
+        margin-left: 25px;
+    }
+
+    .updown ons-button {
+        width: 100px;
+        height: 85px;
+    }
+
+.illumbutton ons-button {
+    width: 96%;
+    height: 150px;
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+.temperature {
+    width: 100%;
+    height: 25%;
+    border: solid 3px;
+    border-radius: 25px;
+    margin-top: 2%;
+    background-color: darkgray;
+}
+
+.temp {
+    height: 75%;
+}
+
+.temp .tempstartbtn {
+    width: 100%;
+    height: 15%;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 25px;
+    padding: 23px;
+}
+
+.temp .tempbtn {
+    width: 47%;
+    height: 15%;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 25px;
+    padding: 23px;
+}
+
+.temp .divbox {
+    display: inline;
+}
+
+.temp p {
+    display: inline;
+}
+
+.maxcurbtn {
+    width: 100%;
+    height: 20%;
+}
+
+.halfcurbtn {
+    width: 47%;
+    height: 20%;
+}
