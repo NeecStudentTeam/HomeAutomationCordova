@@ -72,47 +72,50 @@
                 <div class="left"><ons-back-button>Back</ons-back-button></div>
                 <div class="center">TV</div>
             </ons-toolbar>
-            <section class="tvrow">
-                <div class="firstrow">
-                    <ons-button ng-click="onclick(11)">入力切替</ons-button>
-                    <ons-button ng-click="onclick(1)">電源</ons-button><br />
+            <section>
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(11)">入力切替</ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(1)">電源</ons-button>
                 </div>
-                <div class="secondrow">
-                    <ons-button ng-click="onclick(19)">地デジ</ons-button>
-                    <ons-button ng-click="onclick(20)">BS</ons-button>
-                    <ons-button ng-click="onclick(21)">CS</ons-button>
-                    <!--<ons-button>CS番号</ons-button><br />-->
+                    <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(19)">地デジ</ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(20)">BS</ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(21)">CS</ons-button>
                 </div>
-                <div class="thirdrow channelrow">
-                    <ons-button ng-click="onclick(2)">1</ons-button>
-                    <ons-button ng-click="onclick(3)">2</ons-button>
-                    <ons-button ng-click="onclick(4)">3</ons-button>
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(2)">1</ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(3)">2</ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(4)">3</ons-button>
                 </div>
-                <div class="fourthrow channelrow">
-                    <ons-button ng-click="onclick(5)">4</ons-button>
-                    <ons-button ng-click="onclick(6)">5</ons-button>
-                    <ons-button ng-click="onclick(7)">6</ons-button>
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(5)">4</ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(6)">5</ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(7)">6</ons-button>
                 </div>
-                <div class="fifthrow channelrow">
-                    <ons-button ng-click="onclick(8)">7</ons-button>
-                    <ons-button ng-click="onclick(9)">8</ons-button>
-                    <ons-button ng-click="onclick(10)">9</ons-button>
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(8)">7</ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(9)">8</ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(10)">9</ons-button>
                 </div>
-                <div class="sixrow channelrow">
-                    <ons-button ng-click="onclick(11)">10</ons-button>
-                    <ons-button ng-click="onclick(12)">11</ons-button>
-                    <ons-button ng-click="onclick(13)">12</ons-button>
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(11)">10</ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(12)">11</ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(13)">12</ons-button>
                 </div>
-                <div class="uprow">
-                    <ons-button class="up" ng-click="onclick(17)">↑</ons-button>
-                    <ons-button class="up" ng-click="onclick(15)">↑</ons-button>
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(17)">↑</ons-button>
+                    <div class="remocon-item"></div>
+                    <ons-button class="remocon-item" ng-click="onclick(15)">↑</ons-button>
                 </div>
-                <div class="typerow">
-                    <span id="channel">チャンネル</span><span id="volume">音量</span>
+                <div class="remocon-item-container">
+                    <div class="remocon-item">チャンネル</div>
+                    <div class="remocon-item"></div>
+                    <div class="remocon-item">音量</div>
                 </div>
-                <div class="downrow">
-                    <ons-button class="down" ng-click="onclick(18)">↓</ons-button>
-                    <ons-button class="down" ng-click="onclick(16)">↓</ons-button>
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(18)">↓</ons-button>
+                    <div class="remocon-item"></div>
+                    <ons-button class="remocon-item" ng-click="onclick(16)">↓</ons-button>
                 </div>
             </section>
         </ons-page>
@@ -276,8 +279,7 @@
         <ons-button ng-click="onOffChoice('off')">off</ons-button>
         <ons-button ng-click="onOff.hide()">cancel</ons-button>
         <ons-button ng-click="onOff.hide()">ok</ons-button>
-    </ons-modal> 
+    </ons-modal>
     -->
 </body>
 </html>
-

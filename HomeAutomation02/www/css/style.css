@@ -258,6 +258,20 @@
     padding: 23px;
 }
 
+.remocon-item-container {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  padding: 3px;
+}
+
+.remocon-item {
+    flex: 1 1 auto;
+    margin: 0 3px;
+    width: 200px;
+    text-align: center;
+}
+
 /* エアコン画面 */
 
 /* 連動設定詳細 /*
