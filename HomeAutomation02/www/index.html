@@ -7,10 +7,13 @@
     <meta name="viewport" content="width=device-width" />
     <meta name="viewport" content="height=device-height" />
 
+
     <!-- CSS dependencies -->
+    <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="lib/onsen/css/onsenui.css" />
     <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css" />
     <link rel="stylesheet" href="css/style.css" />
+
 
     <!-- JS dependencies (order matters!) -->
     <script src="scripts/platformOverrides.js"></script>
@@ -18,13 +21,16 @@
     <script src="lib/onsen/js/Angular/angular.js"></script>
     <script src="lib/onsen/js/angular-onsenui.js"></script>
 
+
     <!-- Cordova reference -->
     <script src="cordova.js"></script>
     <script src="scripts/index.js"></script>
     <!-- -->
     <title>Onsen UI</title>
 
+
 </head>
+
 
 <body ng-controller="MainController">
     <!--トップページ-->
@@ -41,6 +47,7 @@
         </ons-page>
     </ons-template>
 
+
     <!--リモコン選択画面-->
     <ons-template id="choice.html">
         <ons-page>
@@ -52,11 +59,11 @@
                 <ons-button class="choice" ng-click="myNavigator.pushPage('tv.html')"><img src="images/tv.png" /></ons-button>
                 <ons-button class="choice" ng-click="myNavigator.pushPage('illumination.html')"><img src="images/illum.png" /></ons-button>
                 <ons-button class="choice" ng-click="myNavigator.pushPage('aircon.html')"></ons-button>
-                <ons-button class="choice" ng-click="myNavigator.pushPage('curtain.html')"></ons-button>
                 <!--<ons-button class="choice" ng-click="myNavigator.pushPage('Ltika.html')">Lチカ</ons-button>-->
             </div>
         </ons-page>
     </ons-template>
+
 
     <!--テレビページ-->
     <ons-template id="tv.html">
@@ -65,7 +72,7 @@
                 <div class="left"><ons-back-button>Back</ons-back-button></div>
                 <div class="center">TV</div>
             </ons-toolbar>
-            <div class="firstset">
+            <section class="tvrow">
                 <div class="firstrow">
                     <ons-button ng-click="onclick(11)">入力切替</ons-button>
                     <ons-button ng-click="onclick(1)">電源</ons-button><br />
@@ -76,40 +83,41 @@
                     <ons-button ng-click="onclick(21)">CS</ons-button>
                     <!--<ons-button>CS番号</ons-button><br />-->
                 </div>
-                <div class="thirdrow">
-                    <ons-button class="channelbutton" ng-click="onclick(2)">1</ons-button>
-                    <ons-button class="channelbutton" ng-click="onclick(3)">2</ons-button>
-                    <ons-button class="channelbutton" ng-click="onclick(4)">3</ons-button>
+                <div class="thirdrow channelrow">
+                    <ons-button ng-click="onclick(2)">1</ons-button>
+                    <ons-button ng-click="onclick(3)">2</ons-button>
+                    <ons-button ng-click="onclick(4)">3</ons-button>
                 </div>
-                <div class="fourthrow">
-                    <ons-button class="channelbutton" ng-click="onclick(5)">4</ons-button>
-                    <ons-button class="channelbutton" ng-click="onclick(6)">5</ons-button>
-                    <ons-button class="channelbutton" ng-click="onclick(7)">6</ons-button>
+                <div class="fourthrow channelrow">
+                    <ons-button ng-click="onclick(5)">4</ons-button>
+                    <ons-button ng-click="onclick(6)">5</ons-button>
+                    <ons-button ng-click="onclick(7)">6</ons-button>
                 </div>
-                <div class="fifthrow">
-                    <ons-button class="channelbutton" ng-click="onclick(8)">7</ons-button>
-                    <ons-button class="channelbutton" ng-click="onclick(9)">8</ons-button>
-                    <ons-button class="channelbutton" ng-click="onclick(10)">9</ons-button>
+                <div class="fifthrow channelrow">
+                    <ons-button ng-click="onclick(8)">7</ons-button>
+                    <ons-button ng-click="onclick(9)">8</ons-button>
+                    <ons-button ng-click="onclick(10)">9</ons-button>
                 </div>
-                <div class="sixrow">
-                    <ons-button class="channelbutton" ng-click="onclick(11)">10</ons-button>
-                    <ons-button class="channelbutton" ng-click="onclick(12)">11</ons-button>
-                    <ons-button class="channelbutton" ng-click="onclick(13)">12</ons-button><br />
+                <div class="sixrow channelrow">
+                    <ons-button ng-click="onclick(11)">10</ons-button>
+                    <ons-button ng-click="onclick(12)">11</ons-button>
+                    <ons-button ng-click="onclick(13)">12</ons-button>
                 </div>
                 <div class="uprow">
                     <ons-button class="up" ng-click="onclick(17)">↑</ons-button>
-                    <ons-button class="up" ng-click="onclick(15)">↑</ons-button><br />
+                    <ons-button class="up" ng-click="onclick(15)">↑</ons-button>
                 </div>
                 <div class="typerow">
-                    <span id="channel">チャンネル</span><span id="volume">音量</span><br />
+                    <span id="channel">チャンネル</span><span id="volume">音量</span>
                 </div>
                 <div class="downrow">
                     <ons-button class="down" ng-click="onclick(18)">↓</ons-button>
                     <ons-button class="down" ng-click="onclick(16)">↓</ons-button>
                 </div>
-            </div>
+            </section>
         </ons-page>
     </ons-template>
+
 
     <!--照明ページ-->
     <ons-template id="illumination.html">
@@ -119,12 +127,14 @@
                 <div class="center">ILLUMINATION</div>
             </ons-toolbar>
             <div class="firstset">
-                <div class="brightness">
-                </div>
-                <div class="updown">
-                    <ons-button>↑</ons-button><br />
-                    <p>明るさ</p>
-                    <ons-button>↓</ons-button><br />
+                <div class="illumset">
+                    <div class="brightness">
+                    </div>
+                    <div class="updown">
+                        <ons-button>↑</ons-button><br />
+                        <p>明るさ</p>
+                        <ons-button>↓</ons-button><br />
+                    </div>
                 </div>
                 <div class="illumbutton">
                     <ons-button>全灯</ons-button><br />
@@ -134,6 +144,7 @@
             </div>
         </ons-page>
     </ons-template>
+
 
     <!--エアコンページ-->
     <ons-template id="aircon.html">
@@ -149,34 +160,9 @@
                     <ons-button class="tempstartbtn">運転/停止</ons-button><br />
                     <ons-button class="tempbtn">冷房</ons-button>
                     <ons-button class="tempbtn">風量切替</ons-button><br />
-                    <ons-button class="tempbtn">暖房</ons-button>
-                    <ons-button class="tempbtn">↑</ons-button><br />
-                    <ons-button class="tempbtn">除湿</ons-button>
-                    <div class="tempbtn divbox"><p>温度</p></div><br />
+                    <ons-button class="tempbtn">暖房</ons-button><br />
+                    <ons-button class="tempbtn">除湿</ons-button><br />
                     <ons-button class="tempbtn">自動</ons-button>
-                    <ons-button class="tempbtn">↓</ons-button>  
-                </div>
-            </div>
-        </ons-page>
-    </ons-template>
-
-    <!--カーテンリモコン-->
-    <ons-template id="curtain.html">
-        <ons-page>
-            <ons-toolbar>
-                <div class="left"><ons-back-button>Back</ons-back-button></div>
-                <div class="center">AIR CONDITIONER</div>
-            </ons-toolbar>
-            <div class="firstset">
-                <div class="temperature">
-                </div>
-                <div class="temp">
-                    <ons-button class="maxcurbtn">全開</ons-button><br />
-                    <ons-button class="halfcurbtn">右開</ons-button>
-                    <ons-button class="halfcurbtn">左開</ons-button><br />
-                    <ons-button class="halfcurbtn">右閉</ons-button>
-                    <ons-button class="halfcurbtn">左閉</ons-button><br />
-                    <ons-button class="maxcurbtn">全閉</ons-button>
                 </div>
             </div>
         </ons-page>
@@ -203,6 +189,7 @@
         </ons-page>
     </ons-template>
 
+
     <!--連動設定画面-->
     <ons-template id="setting.html">
         <ons-page>
@@ -216,8 +203,12 @@
                     {{value.spot_station_name}}
                 </ons-list-item>
             </ons-list>
+            <ons-fab position="bottom right">
+                <ons-icon ng-click="" icon="md-plus"></ons-icon>
+            </ons-fab>
         </ons-page>
     </ons-template>
+
 
     <!--連動設定詳細画面-->
     <ons-template id="detailsetting.html">
@@ -227,32 +218,66 @@
                 <div class="center">DETAILSETTING</div>
             </ons-toolbar>
             <ons-list ng-init="init()">
-                <ons-list-item ng-repeat="item in detail track by $index">
-                    <ons-button ng-click="detailClick($index)">{{item.name}}</ons-button>
+                <ons-list-item ng-repeat="item in detail track by $index" ng-click="detailClick($index)">
+                    <p>{{item.name}}→{{item.onoff}}</p>
                     <ons-button ng-click="detail.splice($index, 1)" ng-disabled="detail.length <= 1">削除</ons-button>
                 </ons-list-item>
             </ons-list>
-            <ons-button ng-click="detail.push({ name: '' })">追加</ons-button>
+            <ons-button class="right" ng-click="detail.push({ name: '', onoff: '' })">追加</ons-button>
             <ons-button>ok</ons-button>
         </ons-page>
     </ons-template>
 
     <ons-modal var="myModal" direction="up">
+        <ons-button ng-click="CESet.show()"></ons-button>
+        <ons-button ng-click="onOff.show()"></ons-button>
+        <div class="footer">
+            <ons-button ng-click="myModal.hide()">cancel</ons-button>
+            <ons-button ng-click="putClick()">ok</ons-button>
+        </div>
+    </ons-modal>
+
+    <ons-modal var="CESet" direction="up">
+        <ons-list>
+            <ons-list-header>家電</ons-list-header>
+            <ons-list-item tappable ng-repeat="value in items" ng-click="settingTest(value.spot_station_name)">
+                {{value.spot_station_name}}
+            </ons-list-item>
+        </ons-list>
+        <div class="footer">
+            <ons-button ng-click="CESet.hide()">cancel</ons-button>
+            <ons-button ng-click="CESet.hide()">ok</ons-button>
+        </div>
+    </ons-modal>
+
+    <ons-modal var="onOff" derection="up">
+        <ons-button ng-click="onOffShow('on')">on</ons-button>
+        <ons-button ng-click="onOffShow('off')">off</ons-button>
+        <ons-button ng-click="onOff.hide()">cancel</ons-button>
+        <ons-button ng-click="onOff.hide()">ok</ons-button>
+    </ons-modal>
+    <!--
+       <ons-modal var="myModal" direction="up">
         <ons-list>
             <ons-list-header>家電</ons-list-header>
             <ons-list-item tappable ng-repeat="value in items" ng-click="settingTest(numIndex, value.spot_station_name)">
                 {{value.spot_station_name}}
             </ons-list-item>
         </ons-list>
-        <ons-button ng-click="myModal.hide()">cancel</ons-button>
-        <ons-button ng-click="myModal.hide()">ok</ons-button>
+        <div class="footer">
+            <ons-button ng-click="myModal.hide()">cancel</ons-button>
+            <ons-button ng-click="myModal.hide()">ok</ons-button>
+        </div>
     </ons-modal>
 
+
     <ons-modal var="onOff" derection="up">
-        <ons-button ng-click="onOffClick('on')">on</ons-button>
-        <ons-button ng-click="onOffClick('off')">off</ons-button>
+        <ons-button ng-click="onOffChoice('on')">on</ons-button>
+        <ons-button ng-click="onOffChoice('off')">off</ons-button>
         <ons-button ng-click="onOff.hide()">cancel</ons-button>
         <ons-button ng-click="onOff.hide()">ok</ons-button>
-    </ons-modal>
+    </ons-modal> 
+    -->
 </body>
 </html>
+

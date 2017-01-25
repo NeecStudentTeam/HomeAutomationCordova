@@ -2,11 +2,15 @@
     height: 100%;
 }
 
+/*　　*/
 .firstset {
-    width: 96%;
-    height: 100%;
+    width: 98%;
+    height: 98%;
     margin: 0 auto;
+    background-color: #ffd800;
 }
+
+/* トップページ */
 
 .homebutton {
     position: relative;
@@ -15,27 +19,29 @@
     margin-top: 2%;
 }
 
-    .homebutton #rimoconbutton {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 80%;
-        width: auto;
-        margin: auto;
-    }
+.homebutton #rimoconbutton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 80%;
+    width: auto;
+    margin: auto;
+}
 
-    .homebutton #settingbutton {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        height: 80%;
-        width: auto;
-    }
+.homebutton #settingbutton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 80%;
+    width: auto;
+}
+
+/* トップページ */
 
 /*
     .homebutton {
@@ -65,6 +71,8 @@
     left: -11px;
 }
 
+/* TV画面 */
+
 .firstrow ons-button:first-child,
 .secondrow ons-button:first-child,
 .thirdrow ons-button:first-child,
@@ -73,117 +81,168 @@
 .sixrow ons-button:first-child,
 .uprow ons-button:first-child,
 .downrow ons-button:first-child {
-    margin-left: 10px;
+    margin: 0;
 }
 
-.tvbutton {
-    font-size: 50px;
+.tvrow {
+    width: 98%;
+    height: 98%;
+    margin: 0 auto;
+}
+
+.firstrow {
+    height: 10%;
+    width: 100%;
+    margin-top: 2%;
 }
 
 .firstrow ons-button {
-    width: 47%;
-    height: 85px;
-    margin-top: 10px;
-    margin-left: 10px;
-    font-size: 25px;
-    padding: 23px;
+    width: 48%;
+    height: 100%;
+    margin: 0 0 0 2%;
+    font-size: 60px;
+}
+
+.secondrow {
+    height: 10%;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.secondrow ons-button:nth-child(2) {
+    width: 32%;
+    height: 100%;
+    margin: 0 0 0 2%;
+    display:inline-block;
 }
 
 .secondrow ons-button {
-    width: 30%;
-    height: 85px;
-    margin-top: 10px;
-    margin-left: 13px;
-    font-size: 30px;
-    padding: 23px;
+    width: 31%;
+    height: 100%;
+    margin: 0 0 0 2%;
+    display:inline-block;
 }
 
-.channelbutton {
+.channelrow {
+    height: 10%;
+    margin-top: 2%;
+}
+
+.channelrow ons-button {
     width: 30%;
-    height: 85px;
-    margin-top: 10px;
-    margin-left: 13px;
-    font-size: 90px;
-    padding: 23px;
+    height: 100%;
+    margin: 0 0 0 4%;
+}
+
+.uprow {
+    height: 10%;
+    margin-top: 2%;
 }
 
 .uprow ons-button {
     width: 30%;
-    height: 85px;
-    margin-top: 20px;
-    margin-left: 202px;
-    font-size: 90px;
-    padding: 15px;
+    height: 100%;
+    margin: 0 0 0 39%;
+}
+
+.downrow {
+    height: 10%;
+    margin-top: 2%;
 }
 
 .downrow ons-button {
     width: 30%;
-    height: 85px;
-    margin-top: 20px;
-    margin-left: 202px;
-    font-size: 90px;
-    padding: 15px;
+    height: 100%;
+    margin: 0 0 0 39%;
 }
 
 .typerow {
-    margin-top: 20px;
+    width: 100%;
+    height: 8%;
+    margin-top: 2%;
 }
 
-#channel {
-    margin-left: 53px;
+
+.typerow #channel {
+    margin-left: 10%;
 }
 
-#volume {
-    margin-left: 320px;
+
+.typerow #volume {
+    margin-left: 63%;
+}
+
+/* tv画面 */
+
+/* 照明画面 */
+
+.illumset {
+    width: 100%;
+    height: 40%;
+    margin: 0;
 }
 
 .brightness {
-    width: 300px;
-    height: 200px;
+    width: 50%;
+    height: 70%;
     float: left;
     border: solid 3px;
     border-radius: 25px;
     background-color: darkgray;
-    margin-left: 30px;
+    margin-top: 5%;
+    margin-left: 10%;
 }
 
 .updown {
-    margin-top: 30px;
-    margin-left: 400px;
+    height: 100%;
+    margin-left: 70%;
+    background-color: aliceblue;
 }
 
-    .updown p {
-        margin-left: 25px;
-    }
 
-    .updown ons-button {
-        width: 100px;
-        height: 85px;
-    }
+.updown p {
+    margin-top: 10%;
+    margin-left: 8%;
+}
+
+.updown ons-button {
+    width: 40%;
+    height: 20%;
+    margin-top: 10%;
+}
+
+.updown ons-button:first-child {
+    margin-top: 35%;
+}
+
+.illumbutton {
+    width: 100%;
+    height: 60%;
+}
 
 .illumbutton ons-button {
-    width: 96%;
-    height: 150px;
-    margin-top: 30px;
-    margin-left: 10px;
+    width: 100%;
+    height: 25%;
+    margin-top: 5%;
 }
+
+/* 照明画面　*/
+
+/* エアコン画面 */
 
 .temperature {
     width: 100%;
-    height: 25%;
+    height: 26%;
     border: solid 3px;
     border-radius: 25px;
     margin-top: 2%;
     background-color: darkgray;
 }
 
-.temp {
-    height: 75%;
-}
 
 .temp .tempstartbtn {
     width: 100%;
-    height: 15%;
+    height: 25%;
     margin-top: 10px;
     margin-left: 10px;
     font-size: 25px;
@@ -192,27 +251,13 @@
 
 .temp .tempbtn {
     width: 47%;
-    height: 15%;
+    height: 12%;
     margin-top: 10px;
     margin-left: 10px;
     font-size: 25px;
     padding: 23px;
 }
 
-.temp .divbox {
-    display: inline;
-}
+/* エアコン画面 */
 
-.temp p {
-    display: inline;
-}
-
-.maxcurbtn {
-    width: 100%;
-    height: 20%;
-}
-
-.halfcurbtn {
-    width: 47%;
-    height: 20%;
-}
+/* 連動設定詳細 /*
