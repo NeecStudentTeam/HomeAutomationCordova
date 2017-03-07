@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="viewport" content="height=device-height" />
+    <meta name="viewport" content="width=device-width, height=device=height, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
 
     <!-- JS dependencies (order matters!) -->
     <script src="scripts/platformOverrides.js"></script>
@@ -14,11 +14,9 @@
     <script src="lib/onsen/js/angular-onsenui.js"></script>
 
     <!-- CSS dependencies -->
-
     <link rel="stylesheet" href="lib/onsen/css/onsenui.css" />
-    <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css" />
+    <link rel="stylesheet" href="lib/onsen/css/onsen-css-components-blue-basic-theme.css" />
     <link rel="stylesheet" href="css/style.css" />
-
 
     <!-- Cordova reference -->
     <script src="cordova.js"></script>
@@ -40,7 +38,7 @@
             </ons-toolbar>
             <section class="firstset">
                 <ons-button class="homebutton" ng-click="myNavigator.pushPage('choice.html')"><img src="images/rimocon.png" id="rimoconbutton" /></ons-button>
-                <ons-button class="homebutton" ng-click="settingSlide()"><img src="images/setting.png" id="settingbutton" /></ons-button>
+                <ons-button class="homebutton" ng-click="page2Slide()"><img src="images/setting.png" id="settingbutton" /></ons-button>
             </section>
         </ons-page>
     </ons-template>
@@ -185,7 +183,7 @@
 
 
     <!--連動設定画面-->
-    <ons-template id="setting.html">
+    <ons-template id="page2.html">
         <ons-page>
             <ons-toolbar>
                 <div class="left"><ons-back-button>Back</ons-back-button></div>
@@ -207,8 +205,7 @@
         <ons-button ng-click="detailsetting(setname)">ok</ons-button>
     </ons-modal>
 
-    <!--連動設定詳細画面-->
-    <ons-template id="detailsetting.html">
+    <ons-template id="page3.html">
         <ons-page>
             <ons-toolbar>
                 <div class="left"><ons-back-button>Back</ons-back-button></div>
@@ -216,20 +213,20 @@
             </ons-toolbar>
             <ons-list ng-init="applianceDetInit()">
                 <ons-list-item ng-repeat="items in applianceDetail track by $index">
-                    <p ng-click="ConEleChoice(items.id)">家電１：{{items.name1}}設定１：{{items.id1}} →　家電２：{{items.name2}}設定２：{{items.id2}}</p>
+                    <p ng-click="ConEleChoice(items.id)">家電１：{{items.triggerAppliance}}設定１：{{items.trigger}} →　家電２：{{items.actionAppliance}}設定２：{{items.action}}</p>
                     <ons-button ng-click="detailDelete(items.id)">削除</ons-button>
                 </ons-list-item>
             </ons-list>
-            <ons-button ng-click="ConEle2.show();">追加</ons-button>
+            <ons-button ng-click="ConeleSet2.show();">追加</ons-button>
         </ons-page>
     </ons-template>
 
     <!-- put版-->
     <ons-modal var="ConelesSet1" derection="up">
-        <ons-button ng-click="coneleSetting(1)">家電１</ons-button>
-        <ons-button ng-click="onoffSetting(1)">状態１</ons-button>
-        <ons-button ng-click="coneleSetting(2)">家電２</ons-button>
-        <ons-button ng-click="onoffSetting(2)">状態２</ons-button>
+        <ons-button ng-click="coneleSetting(1)">{{conele1}}</ons-button>
+        <ons-button ng-click="onoffSetting(1)">{{onoff1}}</ons-button>
+        <ons-button ng-click="coneleSetting(2)">{{conele2}}</ons-button>
+        <ons-button ng-click="onoffSetting(2)">{{onoff2}}</ons-button>
         <ons-button ng-click="ConeleSet1.hide()">cancel</ons-button>
         <ons-button ng-click="detailUpdate()">ok</ons-button>
     </ons-modal>
@@ -247,7 +244,7 @@
     <ons-modal var="Conele" derection="up">
         <ons-list ng-init="coneleListInit()">
             <ons-list-header>家電</ons-list-header>
-            <ons-list-item tappable ng-repeat="data in coneleList" ng-click="coneleData(data.name)">
+            <ons-list-item tappable ng-repeat="data in coneleList" ng-click="coneleData(data.name, data.id)">
                 {{data.name}}
             </ons-list-item>
         </ons-list>
@@ -257,7 +254,7 @@
 
     <ons-modal var="onoff" derection="up">
         <ons-list>
-            <ons-list-item tappable ng-repeat="data in coneleList" ng-click="onoffChange(data.name)">
+            <ons-list-item tappable ng-repeat="data in coneleList" ng-click="onoffChange(data.name, data.id)">
                 {{data.name}}
             </ons-list-item>
         </ons-list>

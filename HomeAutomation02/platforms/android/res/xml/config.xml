@@ -13,13 +13,13 @@
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
     <vs:features />
+    <preference name="ErrorUrl" value="" />
     <preference name="windows-target-version" value="8.1" />
     <preference name="windows-phone-target-version" value="8.1" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="portrait" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="AndroidLaunchMode" value="singleTop" />
-    <preference name="ErrorUrl" value="" />
     <preference name="Fullscreen" value="false" />
     <preference name="KeepRunning" value="true" />
     <preference name="SplashScreen" value="screen" />

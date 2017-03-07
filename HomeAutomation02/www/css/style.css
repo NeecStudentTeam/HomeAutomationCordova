@@ -2,6 +2,10 @@
     height: 100%;
 }
 
+section, div {
+    display: inline-block;
+}
+
 /*　　*/
 .firstset {
     width: 98%;
@@ -73,157 +77,56 @@
 
 /* TV画面 */
 
-.firstrow ons-button:first-child,
-.secondrow ons-button:first-child,
-.thirdrow ons-button:first-child,
-.fourthrow ons-button:first-child,
-.fifthrow ons-button:first-child,
-.sixrow ons-button:first-child,
-.uprow ons-button:first-child,
-.downrow ons-button:first-child {
-    margin: 0;
+.tv-remocon {
+  width: 100%;
+  height: 100%;
+  background-color: #ff0000;
 }
 
-.tvrow {
-    width: 98%;
-    height: 98%;
-    margin: 0 auto;
+.remocon-item-container {
+  width: 100%;
+  height: 11%;
+  display: flex;
+  flex-flow: row;
 }
 
-.firstrow {
-    height: 10%;
-    width: 100%;
-    margin-top: 2%;
+.remocon-item-container:first-child {
+    margin-top: 1%;
 }
 
-.firstrow ons-button {
-    width: 48%;
-    height: 100%;
-    margin: 0 0 0 2%;
-    font-size: 60px;
+.remocon-item {
+    flex: 1 1 auto;
+    width: 200px;
+    margin: 3px;
 }
 
-.secondrow {
-    height: 10%;
-    width: 100%;
-    margin-top: 2%;
-}
-
-.secondrow ons-button:nth-child(2) {
-    width: 32%;
-    height: 100%;
-    margin: 0 0 0 2%;
-    display:inline-block;
-}
-
-.secondrow ons-button {
-    width: 31%;
-    height: 100%;
-    margin: 0 0 0 2%;
-    display:inline-block;
-}
-
-.channelrow {
-    height: 10%;
-    margin-top: 2%;
-}
-
-.channelrow ons-button {
-    width: 30%;
-    height: 100%;
-    margin: 0 0 0 4%;
-}
-
-.uprow {
-    height: 10%;
-    margin-top: 2%;
-}
-
-.uprow ons-button {
-    width: 30%;
-    height: 100%;
-    margin: 0 0 0 39%;
-}
-
-.downrow {
-    height: 10%;
-    margin-top: 2%;
-}
-
-.downrow ons-button {
-    width: 30%;
-    height: 100%;
-    margin: 0 0 0 39%;
-}
-
-.typerow {
-    width: 100%;
-    height: 8%;
-    margin-top: 2%;
-}
-
-
-.typerow #channel {
-    margin-left: 10%;
-}
-
-
-.typerow #volume {
-    margin-left: 63%;
+.tv-char {
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
 }
 
 /* tv画面 */
 
+
+
 /* 照明画面 */
 
-.illumset {
+.illum-remocon {
     width: 100%;
-    height: 40%;
-    margin: 0;
-}
-
-.brightness {
-    width: 50%;
-    height: 70%;
-    float: left;
-    border: solid 3px;
-    border-radius: 25px;
-    background-color: darkgray;
-    margin-top: 5%;
-    margin-left: 10%;
-}
-
-.updown {
     height: 100%;
-    margin-left: 70%;
-    background-color: aliceblue;
+    background-color: #ff0000;
 }
 
-
-.updown p {
-    margin-top: 10%;
-    margin-left: 8%;
-}
-
-.updown ons-button {
-    width: 40%;
-    height: 20%;
-    margin-top: 10%;
-}
-
-.updown ons-button:first-child {
-    margin-top: 35%;
-}
-
-.illumbutton {
+.illum-button {
     width: 100%;
     height: 60%;
 }
 
-.illumbutton ons-button {
+.illum-button ons-button {
     width: 100%;
     height: 25%;
-    margin-top: 5%;
 }
 
 /* 照明画面　*/
@@ -258,25 +161,14 @@
     padding: 23px;
 }
 
-.remocon {
-  width: 100%;
-  height: 100%;
-}
 
-.remocon-item-container {
+/* エアコン画面 */
+
+/* 連動設定詳細 /*/
+
+.remocon-item-name {
   width: 100%;
   height: 10%;
   display: flex;
   flex-flow: row;
 }
-
-.remocon-item {
-    flex: 1 1 auto;
-    margin: 3px;
-    width: 200px;
-    text-align: center;
-}
-
-/* エアコン画面 */
-
-/* 連動設定詳細 /*
