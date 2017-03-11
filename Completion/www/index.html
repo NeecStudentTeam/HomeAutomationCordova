@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<html lang="ja" ng-app="my-app">
+<head>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, height=device=height, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+
+    <!-- JS dependencies (order matters!) -->
+    <script src="scripts/platformOverrides.js"></script>
+    <script src="lib/onsen/js/onsenui.js"></script>
+    <script src="lib/onsen/js/Angular/angular.js"></script>
+    <script src="lib/onsen/js/angular-onsenui.js"></script>
+
+    <!-- CSS dependencies -->
+    <link rel="stylesheet" href="lib/onsen/css/onsenui.css" />
+    <link rel="stylesheet" href="lib/onsen/css/onsen-css-components-blue-basic-theme.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Cordova reference -->
+    <script src="cordova.js"></script>
+    <script src="scripts/index.js"></script>
+    <!-- -->
+    <title>Onsen UI</title>
+
+
+</head>
+
+
+<body ng-controller="MainController">
+    <!--トップページ-->
+    <ons-navigator var="myNavigator" page="home.html"></ons-navigator>
+    <ons-template id="home.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="center">HOME</div>
+            </ons-toolbar>
+            <section class="firstset">
+                <ons-button class="homebutton" ng-click="myNavigator.pushPage('choice.html')"><img src="images/rimocon.png" id="rimoconbutton" /></ons-button>
+                <ons-button class="homebutton" ng-click="page2Slide()"><img src="images/setting.png" id="settingbutton" /></ons-button>
+            </section>
+        </ons-page>
+    </ons-template>
+
+
+    <!--リモコン選択画面-->
+    <ons-template id="choice.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left"><ons-back-button>Back</ons-back-button></div>
+                <div class="center">CHOICE</div>
+            </ons-toolbar>
+            <div id="Rchoice" class="firstset">
+                <ons-button class="choice" ng-click="myNavigator.pushPage('tv.html')"><img src="images/tv.png" /></ons-button>
+                <!--<ons-button class="choice" ng-click="myNavigator.pushPage('illumination.html')"><img src="images/illum.png" /></ons-button>
+                <ons-button class="choice" ng-click="myNavigator.pushPage('aircon.html')"></ons-button>-->
+                <!--<ons-button class="choice" ng-click="myNavigator.pushPage('Ltika.html')">Lチカ</ons-button>-->
+            </div>
+        </ons-page>
+    </ons-template>
+
+
+    <!--テレビページ-->
+    <ons-template id="tv.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left"><ons-back-button>Back</ons-back-button></div>
+                <div class="center">TV</div>
+            </ons-toolbar>
+            <section class="tv-remocon">
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(11)"><p class="tv-char">入力切替</p></ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(1)"><p class="tv-char">電源</p></ons-button>
+                </div>
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(19)"><p class="tv-char">地デジ</p></ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(20)"><p class="tv-char">BS</p></ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(21)"><p class="tv-char">CS</p></ons-button>
+                </div>
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(2)"><p class="tv-char">1</p></ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(3)"><p class="tv-char">2</p></ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(4)"><p class="tv-char">3</p></ons-button>
+                </div>
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(5)"><p class="tv-char">4</p></ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(6)"><p class="tv-char">5</p></ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(7)"><p class="tv-char">6</p></ons-button>
+                </div>
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(8)"><p class="tv-char">7</p></ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(9)"><p class="tv-char">8</p></ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(10)"><p class="tv-char">9</p></ons-button>
+                </div>
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(11)"><p class="tv-char">10</p></ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(12)"><p class="tv-char">11</p></ons-button>
+                    <ons-button class="remocon-item" ng-click="onclick(13)"><p class="tv-char">12</p></ons-button>
+                </div>
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(17)"><p class="tv-char">↑</p></ons-button>
+                    <div class="remocon-item"></div>
+                    <ons-button class="remocon-item" ng-click="onclick(15)"><p class="tv-char">↑</p></ons-button>
+                </div>
+                <div class="remocon-item-container">
+                    <div class="remocon-item"><p class="tv-char">チャンネル</p></div>
+                    <div class="remocon-item"></div>
+                    <div class="remocon-item"><p class="tv-char">音量</p></div>
+                </div>
+                <div class="remocon-item-container">
+                    <ons-button class="remocon-item" ng-click="onclick(18)"><p class="tv-char">↓</p></ons-button>
+                    <div class="remocon-item"></div>
+                    <ons-button class="remocon-item" ng-click="onclick(16)"><p class="tv-char">↓</p></ons-button>
+                </div>
+            </section>
+        </ons-page>
+    </ons-template>
+
+
+    <!--照明ページ-->
+    <!--
+        <ons-template id="illumination.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left"><ons-back-button>Back</ons-back-button></div>
+                <div class="center">ILLUMINATION</div>
+            </ons-toolbar>
+            <section class="illum-remocon">
+                <div class="illum-set">
+                </div>
+                <div class="illum-button">
+                    <ons-button>全灯</ons-button><br />
+                    <ons-button>常夜灯</ons-button><br />
+                    <ons-button>消灯</ons-button><br />
+                </div>
+            </section>
+        </ons-page>
+    </ons-template>
+    -->
+    
+
+    <!--エアコンページ-->
+    <!--
+    <ons-template id="aircon.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left"><ons-back-button>Back</ons-back-button></div>
+                <div class="center">AIR CONDITIONER</div>
+            </ons-toolbar>
+            <div class="firstset">
+                <div class="temperature">
+                </div>
+                <div class="temp">
+                    <ons-button class="tempstartbtn">運転/停止</ons-button><br />
+                    <ons-button class="tempbtn">冷房</ons-button>
+                    <ons-button class="tempbtn">風量切替</ons-button><br />
+                    <ons-button class="tempbtn">暖房</ons-button><br />
+                    <ons-button class="tempbtn">除湿</ons-button><br />
+                    <ons-button class="tempbtn">自動</ons-button>
+                </div>
+            </div>
+        </ons-page>
+    </ons-template>
+    -->
+
+    <!--Lチカ-->
+    <!--
+    <ons-template id="Ltika.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left"><ons-back-button>Back</ons-back-button></div>
+                <div class="center">Lチカ</div>
+            </ons-toolbar>
+            <div class="firstset">
+                <ons-button class="choice" ng-click="onclick(1)">1</ons-button>
+                <ons-button class="choice" ng-click="onclick(2)">2</ons-button>
+                <ons-button class="choice" ng-click="onclick(3)">3</ons-button>
+                <ons-button class="choice" ng-click="onclick(4)">4</ons-button>
+                <ons-button class="choice" ng-click="onclick(5)">5</ons-button>
+                <ons-button class="choice" ng-click="onclick(6)">6</ons-button>
+                <ons-button class="choice" ng-click="onclick(7)">7</ons-button>
+                <ons-button class="choice" ng-click="onclick(8)">8</ons-button>
+                <ons-button class="choice" ng-click="onclick(9)">9</ons-button>
+            </div>
+        </ons-page>
+    </ons-template>
+    -->
+
+    <!--連動設定画面-->
+    <ons-template id="page2.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left"><ons-back-button>Back</ons-back-button></div>
+                <div class="center">SETTING</div>
+            </ons-toolbar>
+            <ons-list ng-init="init()">
+                <ons-list-item ng-repeat="item in appliance track by $index">
+                    <p ng-click="interlockSetting(item.id)">{{item.name}}</p>
+                    <ons-button ng-click="interlockDelete(item.id)">削除</ons-button>
+                </ons-list-item>
+            </ons-list>
+            <ons-button ng-click="interlock.show()">追加</ons-button>
+        </ons-page>
+    </ons-template>
+
+    <ons-modal var="interlock" derection="up">
+        <ons-input placeholder="setting name" ng-model="setname" float></ons-input>
+        <ons-button ng-click="interlock.hide()">cancel</ons-button>
+        <ons-button ng-click="detailsetting(setname)">ok</ons-button>
+    </ons-modal>
+
+    <ons-template id="page3.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left"><ons-back-button>Back</ons-back-button></div>
+                <div class="center">DETAILSETTING</div>
+            </ons-toolbar>
+            <ons-list ng-init="applianceDetInit()">
+                <ons-list-item ng-repeat="items in applianceDetail track by $index">
+                    <p ng-click="ConEleChoice(items.id)">{{items.triggerAppliance}}{{items.trigger}}{{items.actionAppliance}}{{items.action}}</p>
+                    <ons-button ng-click="detailDelete(items.id)">削除</ons-button>
+                </ons-list-item>
+            </ons-list>
+            <ons-button ng-click="ConeleSet2.show();">追加</ons-button>
+        </ons-page>
+    </ons-template>
+
+    <!-- put版-->
+    <ons-modal var="ConeleSet1" derection="up">
+        <ons-button ng-click="coneleSetting(2)">{{conele2}}</ons-button>
+        <ons-button ng-click="onoffSetting(2)">{{onoff2}}</ons-button>
+        <ons-button ng-click="coneleSetting(1)">{{conele1}}</ons-button>
+        <ons-button ng-click="onoffSetting(1)">{{onoff1}}</ons-button>
+        <ons-button ng-click="ConeleSet1.hide()">cancel</ons-button>
+        <ons-button ng-click="detailUpdate()">ok</ons-button>
+    </ons-modal>
+
+    <!-- post版 -->
+    <ons-modal var="ConeleSet2" derection="up">
+        <ons-button ng-click="coneleSetting(2)">{{conele2}}</ons-button>
+        <ons-button ng-click="onoffSetting(2)">{{onoff2}}</ons-button>
+        <ons-button ng-click="coneleSetting(1)">{{conele1}}</ons-button>
+        <ons-button ng-click="onoffSetting(1)">{{onoff1}}</ons-button>
+        <ons-button ng-click="ConeleSet2.hide()">cancel</ons-button>
+        <ons-button ng-click="detailNew()">ok</ons-button>
+    </ons-modal>
+
+    <ons-modal var="Conele" derection="up">
+        <ons-list ng-init="coneleListInit()">
+            <ons-list-header>家電</ons-list-header>
+            <ons-list-item tappable ng-repeat="data in coneleList" ng-click="coneleData(data.name, data.id)">
+                {{data.name}}
+            </ons-list-item>
+        </ons-list>
+        <ons-button ng-click="Conele.hide()">cancel</ons-button>
+        <ons-button ng-click="coneleDataSet()">ok</ons-button>
+    </ons-modal>
+
+    <ons-modal var="onoff" derection="up">
+        <ons-list>
+            <ons-list-item tappable ng-repeat="data in coneleList" ng-click="onoffChange(data.name, data.id)">
+                {{data.name}}
+            </ons-list-item>
+        </ons-list>
+        <ons-button ng-click="onoff.hide()">cancel</ons-button>
+        <ons-button ng-click="onoffChangeSet()">ok</ons-button>
+    </ons-modal>
+</body>
+</html>

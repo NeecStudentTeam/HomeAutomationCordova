@@ -1,0 +1,172 @@
+﻿html, body, ons-template, ons-page {
+    height: 100%;
+}
+
+section, div {
+    display: inline-block;
+}
+
+/*　　*/
+.firstset {
+    width: 98%;
+    height: 98%;
+    margin: 0 auto;
+}
+
+/* トップページ */
+
+.homebutton {
+    position: relative;
+    width: 100%;
+    height: 48%;
+    margin-top: 2%;
+}
+
+.homebutton #rimoconbutton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 80%;
+    width: auto;
+    margin: auto;
+}
+
+.homebutton #settingbutton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 80%;
+    width: auto;
+}
+
+/* トップページ */
+
+/*
+    .homebutton {
+    position: relative;
+    top: 70px;
+    left: 20px;
+}
+*/
+
+#Rchoice ons-button:first-child {
+    margin-left: 0;
+}
+
+#Rchoice ons-button {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+    margin-left: 10px;
+    position: relative;
+}
+
+.choice img {
+    width: 90px;
+    height: 90px;
+    position: relative;
+    top: 5px;
+    left: -11px;
+}
+
+/* TV画面 */
+
+.tv-remocon {
+  width: 100%;
+  height: 100%;
+}
+
+.remocon-item-container {
+  width: 100%;
+  height: 11%;
+  display: flex;
+  flex-flow: row;
+}
+
+.remocon-item-container:first-child {
+    margin-top: 1%;
+}
+
+.remocon-item {
+    flex: 1 1 auto;
+    width: 200px;
+    margin: 3px;
+}
+
+.tv-char {
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* tv画面 */
+
+
+
+/* 照明画面 */
+
+.illum-remocon {
+    width: 100%;
+    height: 100%;
+    background-color: #ff0000;
+}
+
+.illum-button {
+    width: 100%;
+    height: 60%;
+}
+
+.illum-button ons-button {
+    width: 100%;
+    height: 25%;
+}
+
+/* 照明画面　*/
+
+/* エアコン画面 */
+
+.temperature {
+    width: 100%;
+    height: 26%;
+    border: solid 3px;
+    border-radius: 25px;
+    margin-top: 2%;
+    background-color: darkgray;
+}
+
+
+.temp .tempstartbtn {
+    width: 100%;
+    height: 25%;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 25px;
+    padding: 23px;
+}
+
+.temp .tempbtn {
+    width: 47%;
+    height: 12%;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 25px;
+    padding: 23px;
+}
+
+
+/* エアコン画面 */
+
+/* 連動設定詳細 /*/
+
+.remocon-item-name {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-flow: row;
+}
