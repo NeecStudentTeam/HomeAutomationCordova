@@ -34,7 +34,7 @@
     <ons-template id="home.html">
         <ons-page>
             <ons-toolbar>
-                <div class="center">HOME</div>
+                <div class="center"><b>HOME</b></div>
             </ons-toolbar>
             <section class="firstset">
                 <ons-button class="homebutton" ng-click="myNavigator.pushPage('choice.html')"><img src="images/rimocon.png" id="rimoconbutton" /></ons-button>
@@ -49,7 +49,7 @@
         <ons-page>
             <ons-toolbar>
                 <div class="left"><ons-back-button>Back</ons-back-button></div>
-                <div class="center">CHOICE</div>
+                <div class="center"><b>CHOICE</b></div>
             </ons-toolbar>
             <div id="Rchoice" class="firstset">
                 <ons-button class="choice" ng-click="myNavigator.pushPage('tv.html')"><img src="images/tv.png" /></ons-button>
@@ -66,7 +66,7 @@
         <ons-page>
             <ons-toolbar>
                 <div class="left"><ons-back-button>Back</ons-back-button></div>
-                <div class="center">TV</div>
+                <div class="center"><b>TV</b></div>
             </ons-toolbar>
             <section class="tv-remocon">
                 <div class="remocon-item-container">
@@ -192,61 +192,104 @@
         <ons-page>
             <ons-toolbar>
                 <div class="left"><ons-back-button>Back</ons-back-button></div>
-                <div class="center">SETTING</div>
+                <div class="center"><b>SETTING</b></div>
             </ons-toolbar>
             <ons-list ng-init="init()">
                 <ons-list-item ng-repeat="item in appliance track by $index">
-                    <p ng-click="interlockSetting(item.id)">{{item.name}}</p>
-                    <ons-button ng-click="interlockDelete(item.id)">削除</ons-button>
+                    <div ng-click="interlockSetting(item.id)">
+                      <ons-icon icon="ion-briefcase" size="40px" fixed-width="true"></ons-icon>
+                      {{item.name}}
+                    </div>
+                    <div class="right"><ons-button ng-click="interlockDelete(item.id)">削除</ons-button></div>
                 </ons-list-item>
             </ons-list>
-            <ons-button ng-click="interlock.show()">追加</ons-button>
+            <ons-bottom-toolbar>
+              <p style="text-align: center; line-height: 44px; margin: 0">
+                <ons-button ng-click="interlock.show()">新しく追加</ons-button>
+              </p>
+            </ons-bottom-toolbar>
         </ons-page>
     </ons-template>
 
     <ons-modal var="interlock" derection="up">
-        <ons-input placeholder="setting name" ng-model="setname" float></ons-input>
-        <ons-button ng-click="interlock.hide()">cancel</ons-button>
-        <ons-button ng-click="detailsetting(setname)">ok</ons-button>
+      <div class="center">
+      <ons-row>
+        <div class="center">新しく追加する連動設定グループの名前を入力してください。</div>
+      </ons-row>
+      <ons-row>
+        <ons-col><ons-input placeholder="setting name" ng-model="setname" float></ons-input></ons-col>
+        <ons-col><ons-button ng-click="interlock.hide()">cancel</ons-button> <ons-button ng-click="detailsetting(setname)">ok</ons-button></ons-col>
+      </ons-row>
+    </div>
     </ons-modal>
 
     <ons-template id="page3.html">
         <ons-page>
             <ons-toolbar>
                 <div class="left"><ons-back-button>Back</ons-back-button></div>
-                <div class="center">DETAILSETTING</div>
+                <div class="center"><b>DETAILSETTING</b></div>
             </ons-toolbar>
             <ons-list ng-init="applianceDetInit()">
                 <ons-list-item ng-repeat="items in applianceDetail track by $index">
-                    <p ng-click="ConEleChoice(items.id)">{{items.triggerAppliance}}{{items.trigger}}{{items.actionAppliance}}{{items.action}}</p>
-                    <ons-button ng-click="detailDelete(items.id)">削除</ons-button>
+                    <div ng-click="ConEleChoice(items.id)" style="text-align: center;">
+                      <ons-icon icon="ion-android-settings" size="40px" fixed-width="true"></ons-icon>
+                      <b>{{items.triggerAppliance}}</b> が <b>{{items.trigger}}</b> <b>{{items.actionAppliance}}</b> を <b>{{items.action}}</b>
+                    </div>
+                    <div class="right"><ons-button ng-click="detailDelete(items.id)">削除</ons-button></div>
                 </ons-list-item>
             </ons-list>
-            <ons-button ng-click="ConeleSet2.show();">追加</ons-button>
+            <ons-bottom-toolbar>
+              <p style="text-align: center; line-height: 44px; margin: 0">
+                <ons-button ng-click="ConEleChoice2();">新しく追加</ons-button>
+              </p>
+            </ons-bottom-toolbar>
         </ons-page>
     </ons-template>
 
     <!-- put版-->
     <ons-modal var="ConeleSet1" derection="up">
-        <ons-button ng-click="coneleSetting(2)">{{conele2}}</ons-button>
-        <ons-button ng-click="onoffSetting(2)">{{onoff2}}</ons-button>
-        <ons-button ng-click="coneleSetting(1)">{{conele1}}</ons-button>
-        <ons-button ng-click="onoffSetting(1)">{{onoff1}}</ons-button>
-        <ons-button ng-click="ConeleSet1.hide()">cancel</ons-button>
-        <ons-button ng-click="detailUpdate()">ok</ons-button>
+          <div class="center">
+            <ons-row style="margin: 10px;">
+              <ons-col><div class="center">連動設定を設定してください。</div></ons-col>
+            </ons-row>
+            <ons-row style="margin: 10px;">
+              <ons-col style="margin: 2px;"><ons-button ng-click="coneleSetting(1)">{{conele1}}</ons-button></ons-col>
+              <ons-col style="margin: 2px;">が</ons-col>
+              <ons-col style="margin: 2px;"><ons-button ng-click="onoffSetting(1)">{{onoff1}}</ons-button></ons-col>
+              <ons-col style="margin: 2px;"><ons-button ng-click="coneleSetting(2)">{{conele2}}</ons-button></ons-col>
+              <ons-col style="margin: 2px;">を</ons-col>
+              <ons-col style="margin: 2px;"><ons-button ng-click="onoffSetting(2)">{{onoff2}}</ons-button></ons-col>
+            </ons-row>
+            <ons-row style="margin: 10px;">
+              <ons-col><ons-button ng-click="ConeleSet1.hide()">cancel</ons-button></ons-col>
+              <ons-col><ons-button ng-click="detailUpdate()">ok</ons-button></ons-col>
+            </ons-row>
+          </div>
     </ons-modal>
 
     <!-- post版 -->
     <ons-modal var="ConeleSet2" derection="up">
-        <ons-button ng-click="coneleSetting(2)">{{conele2}}</ons-button>
-        <ons-button ng-click="onoffSetting(2)">{{onoff2}}</ons-button>
-        <ons-button ng-click="coneleSetting(1)">{{conele1}}</ons-button>
-        <ons-button ng-click="onoffSetting(1)">{{onoff1}}</ons-button>
-        <ons-button ng-click="ConeleSet2.hide()">cancel</ons-button>
-        <ons-button ng-click="detailNew()">ok</ons-button>
+        <div class="center">
+          <ons-row style="margin: 10px;">
+            <ons-col><div class="center">連動設定を設定してください。</div></ons-col>
+          </ons-row>
+          <ons-row style="margin: 10px;">
+            <ons-col style="margin: 2px;"><ons-button ng-click="coneleSetting(1)">{{conele1}}</ons-button></ons-col>
+            <ons-col style="margin: 2px;">が</ons-col>
+            <ons-col style="margin: 2px;"><ons-button ng-click="onoffSetting(1)">{{onoff1}}</ons-button></ons-col>
+            <ons-col style="margin: 2px;"><ons-button ng-click="coneleSetting(2)">{{conele2}}</ons-button></ons-col>
+            <ons-col style="margin: 2px;">を</ons-col>
+            <ons-col style="margin: 2px;"><ons-button ng-click="onoffSetting(2)">{{onoff2}}</ons-button></ons-col>
+          </ons-row>
+          <ons-row style="margin: 10px;">
+            <ons-col><ons-button ng-click="ConeleSet2.hide()">cancel</ons-button></ons-col>
+            <ons-col><ons-button ng-click="detailNew()">ok</ons-button></ons-col>
+          </ons-row>
+        </div>
     </ons-modal>
 
     <ons-modal var="Conele" derection="up">
+        <div class="center">家電を選択して下さい</div>
         <ons-list ng-init="coneleListInit()">
             <ons-list-header>家電</ons-list-header>
             <ons-list-item tappable ng-repeat="data in coneleList" ng-click="coneleData(data.name, data.id)">
@@ -254,17 +297,16 @@
             </ons-list-item>
         </ons-list>
         <ons-button ng-click="Conele.hide()">cancel</ons-button>
-        <ons-button ng-click="coneleDataSet()">ok</ons-button>
     </ons-modal>
 
     <ons-modal var="onoff" derection="up">
+        <div class="center">条件・動作を選択してください</div>
         <ons-list>
             <ons-list-item tappable ng-repeat="data in coneleList" ng-click="onoffChange(data.name, data.id)">
                 {{data.name}}
             </ons-list-item>
         </ons-list>
         <ons-button ng-click="onoff.hide()">cancel</ons-button>
-        <ons-button ng-click="onoffChangeSet()">ok</ons-button>
     </ons-modal>
 </body>
 </html>

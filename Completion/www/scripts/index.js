@@ -8,13 +8,13 @@
     angular.module('my-app').controller('MainController', ['$scope', '$http', function ($scope, $http) {
         /* URL */
         var url;
-        var firstUrl = 'http://localhost';
+        var firstUrl = 'http://192.168.0.128';
         var settingUrl = '/api/appliance_link_sets/';
         var detailUrl = '/appliance_links/';
         var dataUrl;
         var ConeleUrl = '/api/appliances/';
-        var onoff1Url = '/api/appliance_link_actions/';
-        var onoff2Url = '/api/appliance_link_triggers/';
+        var onoff1Url = '/api/appliance_link_triggers/';
+        var onoff2Url = '/api/appliance_link_actions/';
         var page;
         var arrayData;
         var urlId;
@@ -41,7 +41,7 @@
         $scope.provisional;
         $scope.detailSetId;
 
-        /* ons-list��init() */
+        /* ons-list��init() */
 
         $scope.init = function () {
             $scope.appliance;
@@ -58,17 +58,10 @@
         /* home */
 
         $scope.page2Slide = function () {
-            page = 'page2.html';
-            $http.jsonp(firstUrl + onoff1Url + '?callback=JSON_CALLBACK').then(function (data) {
-                $scope.applianceLinkActions = data;
-                $http.jsonp(firstUrl + onoff2Url + '?callback=JSON_CALLBACK').then(function (data) {
-                    $scope.applianceLinkTriggers = data;
-                    $http.jsonp(firstUrl + ConeleUrl + '?callback=JSON_CALLBACK').then(function (data) {
-                        $scope.applianceConele = data;
-                        url = firstUrl + settingUrl;
-                        getClick(1, 1);
-                    });
-                });
+            $scope.reloadPage2Data(function(){
+              page = 'page2.html';
+              url = firstUrl + settingUrl;
+              getClick(1, 1);
             });
         }
 
@@ -87,18 +80,58 @@
         }
 
         $scope.detailsetting = function (name) {
-            interlock.hide();
             url = firstUrl + settingUrl;
             $scope.apiData = { name: name, status: 0 };
-            page = 'page3.html';
-            postClick(1, $scope.apiData, 2);
+            // 連動設定グループを追加 追加後、連動設定グループを開く
+            postClick($scope.apiData, function(response){
+                interlock.hide();
+                var arr = response.headers("location").split('/');
+                $scope.interlockSetting(arr[arr.length-1]);
+            });
         }
 
         /* page3 */
+        
+        $scope.applianceDetailClick = function(index) {
+          ConEleChoice($scope.applianceDetail[index].id);
+        }
 
         $scope.ConEleChoice = function (id) {
-            url = firstUrl + settingUrl + interlockId + detailUrl + id;
+            $scope.detailId = id;
+            var applianceDetail = $scope.applianceDetail.filter(function (value) { return value.id == this; }, id)[0];
+            if(applianceDetail) {
+              $scope.coneleId1 = applianceDetail.trigger_appliance_id;
+              $scope.coneleId2 = applianceDetail.action_appliance_id;
+              $scope.onoffId1 = applianceDetail.trigger_id;
+              $scope.onoffId2 = applianceDetail.action_id;
+              $scope.conele1 = applianceDetail.triggerAppliance;
+              $scope.onoff1 = applianceDetail.trigger;
+              $scope.conele2 = applianceDetail.actionAppliance;
+              $scope.onoff2 = applianceDetail.action;
+            }
+            else {
+                $scope.coneleId1 = null;
+                $scope.coneleId2 = null;
+                $scope.onoffId1 = null;
+                $scope.onoffId2 = null;
+                $scope.conele1 = "家電を選択";
+                $scope.conele2 = "家電を選択";
+                $scope.onoff1 = "条件を選択";
+                $scope.onoff2 = "動作を選択";
+            }
             ConeleSet1.show();
+        }
+        
+        $scope.ConEleChoice2 = function (id) {
+            $scope.coneleId1 = null;
+            $scope.coneleId2 = null;
+            $scope.onoffId1 = null;
+            $scope.onoffId2 = null;
+            $scope.conele1 = "家電を選択";
+            $scope.conele2 = "家電を選択";
+            $scope.onoff1 = "条件を選択";
+            $scope.onoff2 = "動作を選択";
+            ConeleSet2.show();
         }
 
         $scope.detailDelete = function (id) {
@@ -107,29 +140,28 @@
         }
 
         $scope.coneleSetting = function (i) {
-            dataUrl = firstUrl + ConeleUrl;
+            $scope.coneleList = $scope.applianceConele;
             $scope.coneleId = i;
-            getConeleClick();
             Conele.show();
         }
 
         $scope.onoffSetting = function (i) {
             switch (i) {
                 case 1:
-                    dataUrl = firstUrl + onoff1Url;
+                    $scope.coneleList = $scope.applianceLinkTriggers;
                     break;
                 case 2:
-                    dataUrl = firstUrl + onoff2Url;
+                    $scope.coneleList = $scope.applianceLinkActions;
                     break;
             }
             $scope.onoffId = i;
-            getConeleClick();
             onoff.show();
         }
 
         $scope.coneleData = function (i, id) {
             $scope.provisional = i;
             $scope.detailSetId = id;
+            $scope.coneleDataSet();
         }
 
         $scope.coneleDataSet = function () {
@@ -149,6 +181,8 @@
         $scope.onoffChange = function (i, id) {
             $scope.provisional = i;
             $scope.detailSetId = id;
+            $scope.onoffChangeSet();
+            onoff.hide()
         }
 
         $scope.onoffChangeSet = function () {
@@ -164,20 +198,48 @@
             }
             onoff.hide();
         }
+        
+        $scope.reloadDetailPage = function() {
+          url = firstUrl + settingUrl + interlockId + detailUrl;
+          getClick(0, 2);
+        }
 
         $scope.detailUpdate = function () {
+            url = firstUrl + settingUrl + interlockId + detailUrl + $scope.detailId;
             arrayData = { appliance_link_set_id: interlockId, trigger_appliance_id: $scope.coneleId1, trigger_id: $scope.onoffId1, action_appliance_id: $scope.coneleId2, action_id: $scope.onoffId2 };
-            putClick(0, arrayData);
-            ConeleSet1.hide();
+            // 連動設定を更新 更新後、表示を更新
+            putClick(arrayData, function(){
+              $scope.reloadDetailPage();
+              ConeleSet1.hide();
+            });
         }
 
         $scope.detailNew = function () {
-            arrayData = { appliance_link_set_id: $scope.coneleId1, trigger_appliance_id: $scope.onoffId1, trigger_id: $scope.coneleId2, action_appliance_id: $scope.onoffId2, action_id: 1 };
-            postClick(0, arrayData, 2);
-            ConeleSet2.hide();
+            url = firstUrl + settingUrl + interlockId + detailUrl;
+            arrayData = { appliance_link_set_id: interlockId, trigger_appliance_id: $scope.coneleId1, trigger_id: $scope.onoffId1, action_appliance_id: $scope.coneleId2, action_id: $scope.onoffId2 };
+            // 連動設定を追加 追加後、表示を更新
+            postClick(arrayData, function(response){
+              $scope.reloadDetailPage();
+              ConeleSet2.hide();
+            });
+        }
+        
+        $scope.reloadPage2Data = function(callback) {
+          $http.jsonp(firstUrl + onoff1Url + '?callback=JSON_CALLBACK').then(function (data) {
+              $scope.applianceLinkTriggers = data.data;
+              $http.jsonp(firstUrl + onoff2Url + '?callback=JSON_CALLBACK').then(function (data) {
+                  $scope.applianceLinkActions = data.data;
+                  $http.jsonp(firstUrl + ConeleUrl + '?callback=JSON_CALLBACK').then(function (data) {
+                      $scope.applianceConele = data.data;
+                      if(callback) {
+                        callback();
+                      }
+                  });
+              });
+          });
         }
 
-        /* �������牺API�N���b�N */
+        /* �������牺API�N���b�N */
         function getClick(i, j) {
             $http({
                 method: 'JSONP',
@@ -189,15 +251,17 @@
                     $scope.appliance = data;
                 }
                 else if (j == 2) {
-                    var applianceDetails = [];
-                    if (i == 0) {
-                        angular.forEach(data, function (applianceDetailData) {
-                            applianceDetailData.triggerAppliance = $scope.applianceConele.data.filter(function (value) { return value.id == this.trigger_appliance_id; }, applianceDetailData)[0].name;
-                            applianceDetailData.trigger = $scope.applianceLinkTriggers.data.filter(function (value) { return value.id == this.trigger_id; }, applianceDetailData)[0].name;
-                            applianceDetailData.actionAppliance = $scope.applianceConele.data.filter(function (value) { return value.id == this.action_appliance_id; }, applianceDetailData)[0].name;
-                            applianceDetailData.action = $scope.applianceLinkActions.data.filter(function (value) { return value.id == this.action_id; }, applianceDetailData)[0].name;
-                        });
-                    }
+                    // 取得した連動設定に表示用の値を設定する
+                    angular.forEach(data, function (applianceDetailData) {
+                        var triggerAppliance = $scope.applianceConele.filter(function (value) { return value.id == this.trigger_appliance_id; }, applianceDetailData)[0];
+                        applianceDetailData.triggerAppliance = triggerAppliance ? triggerAppliance.name : 'データがありません';
+                        var applianceLinkTrigger = $scope.applianceLinkTriggers.filter(function (value) { return value.id == this.trigger_id; }, applianceDetailData)[0];
+                        applianceDetailData.trigger = applianceLinkTrigger ? applianceLinkTrigger.name : 'データがありません';
+                        var actionAppliance = $scope.applianceConele.filter(function (value) { return value.id == this.action_appliance_id; }, applianceDetailData)[0];
+                        applianceDetailData.actionAppliance = actionAppliance ? actionAppliance.name : 'データがありません';
+                        var applianceLinkAction = $scope.applianceLinkActions.filter(function (value) { return value.id == this.action_id; }, applianceDetailData)[0];
+                        applianceDetailData.action = applianceLinkAction ? applianceLinkAction.name : 'データがありません';
+                    });
                     $scope.applianceDetail = data;
                 }
                 if (i == 1) {
@@ -208,40 +272,23 @@
                 alert('GET: error');
             });
         }
-        function setData(data, i, j) {
 
-
-        }
-
-        function getConeleClick() {
-            $http({
-                method: 'JSONP',
-                url: dataUrl,
-                params: { callback: 'JSON_CALLBACK' }
-            })
-            .success(function (data) {
-                $scope.coneleList = data;
-            })
-            .error(function () {
-                alert('GET: error');
-            });
-        }
-
-        function postClick(i, postData, j) {
+        function postClick(postData, callback) {
             $http({
                 method: 'POST',
                 url: url,
                 data: postData
             })
             .then(function (response) {
-                if (i == 1) {
-                    url = firstUrl + response.headers("location");
-                    getClick(1, j);
+                if(callback) {
+                  callback(response);
                 }
-                else {
-                    getClick(0, j);
-                }
-            });
+            }).catch(function(fallback) {
+                alert('POST ERROR:' + fallback.status + '\n' +
+                      'RESPONSE:\n' +
+                      JSON.stringify(fallback.data) + '\n'
+                );
+            });;
         }
 
         function deleteClick(j) {
@@ -264,7 +311,7 @@
             });
         }
 
-        function putClick(i, putData) {
+        function putClick(putData, callback) {
             $http({
                 method: 'PUT',
                 url: url,
@@ -272,10 +319,15 @@
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded;application/json;' }
             })
             .success(function () {
-                getClick(i, 2);
+                if(callback) {
+                  callback();
+                }
             })
-            .error(function () {
-                alert('PUT: error');
+            .error(function (data) {
+                alert('PUT ERROR:' + data.status + '\n' +
+                      'RESPONSE:\n' +
+                      JSON.stringify(data) + '\n'
+                );
             });
         }
 
